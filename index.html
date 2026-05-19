@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Helps minimize Safari UI appearance -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#000000">
+
 <title>Marie Du Toit - Home View Solutions</title>
 
 <style>
@@ -121,6 +127,14 @@
         transform: translateY(0);
     }
 
+    .phone {
+        color: white;
+    }
+
+    .email {
+        color: white;
+    }
+
     .button {
         display: inline-block;
         padding: 14px 28px;
@@ -139,6 +153,7 @@
         opacity: 0;
         transform: translateY(15px);
         transition-delay: 1.1s;
+        cursor: pointer;
     }
 
     .overlay.show .button {
@@ -190,8 +205,8 @@
     </div>
 
     <div class="details">
-        825 963 4410<br>
-        marie@homeviewsolutions.com
+        <div class="phone">825 963 4410</div>
+        <div class="email">marie@homeviewsolutions.com</div>
     </div>
 
     <a class="button" id="downloadContact">
@@ -205,6 +220,13 @@
     const introVideo = document.getElementById('introVideo');
     const bgVideo = document.getElementById('bgVideo');
     const overlay = document.getElementById('overlay');
+
+    // Fake tiny scroll to minimize Safari UI
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            window.scrollTo(0, 1);
+        }, 500);
+    });
 
     // When intro finishes
     introVideo.addEventListener('ended', () => {
